@@ -33,7 +33,7 @@ class PianoAndViolinTests: XCTestCase {
         piano.stopAll()
     
         /// stop recording and get audio file
-        let url = recorder.stopRecording()
+        let url = recorder.stopRecording()!
         print(url)
     }
    

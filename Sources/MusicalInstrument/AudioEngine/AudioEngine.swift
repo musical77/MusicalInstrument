@@ -13,7 +13,7 @@ public class AudioEngine {
     
     /// return default audio engine based on muse score sound font
     public static var `default` : AudioEngine = {
-        let url = Bundle.module.url(forResource: "GeneralUser GS v1.471", withExtension: "sf2")!
+        let url = Bundle.module.url(forResource: "GeneralUser_GS_v1.471", withExtension: "sf2")!
         return AudioEngine(soundBankUrl: url)!
     }()
     
