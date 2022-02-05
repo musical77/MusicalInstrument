@@ -26,7 +26,7 @@ let package = Package(
             name: "MusicalInstrument",
             dependencies: ["MusicSymbol"],
             resources: [
-                .copy("Resource/SoundFont/GeneralUser_GS_v1.471.sf2"),
+                .copy("Resource/SoundFont/GeneralUser_GS_v1_471.sf2"),
                 .copy("Resource/SoundFont/LICENSE.txt"),
                 .copy("Resource/SoundFont/README.md")
             ]
