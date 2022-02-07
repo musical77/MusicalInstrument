@@ -8,4 +8,7 @@ public enum InstrumentControlOption {
     
     /// pressure on this instrument
     case pressure(UInt8)
+    
+    /// output volume, Volume (7) defaults to 100 so you can bump it up a bit.
+    case volume(UInt8)
 }

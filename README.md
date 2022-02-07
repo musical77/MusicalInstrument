@@ -88,3 +88,7 @@ Reference
 ---
 
 https://www.midi.org/midi-articles/about-midi-part-3-midi-messages
+
+MIDI FILE Format
+
+http://www.music.mcgill.ca/~ich/classes/mumt306/StandardMIDIfileformat.html

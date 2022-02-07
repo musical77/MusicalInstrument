@@ -13,6 +13,7 @@ public class Piano : MusicalInstrument {
     
     public func adjust(with option: InstrumentControlOption) {
         // not supported yet
+        assertionFailure("not supported yet in Piano")
     }
     
     public func stop(at pitch: Pitch) {
@@ -49,25 +50,17 @@ public class Piano : MusicalInstrument {
 /// pedal operation
 public extension Piano {
     
-    func adjustInstrument(_ pedalOn: Bool) {
-        if pedalOn {
-            controller.sendController(Piano.PEDAL, withValue: 127)
-        }  else {
-            controller.sendController(Piano.PEDAL, withValue: 0)
-        }
-    }
-       
-    
     /// pedal on
     func pedalOn() {
-        adjustInstrument(true)
+        controller.sendController(SamplerController.PEDAL_CONTROL, withValue: 127)
     }
     
     /// pedal off
     func pedalOff() {
-        adjustInstrument(false)
+        controller.sendController(SamplerController.PEDAL_CONTROL, withValue: 0)
     }
     
-    private static let PEDAL: UInt8 = 64
+    /// * Damper pedal on/off (Sustain)    <63=off    >64=on
+//    private static let PEDAL: UInt8 = 64
 }
 

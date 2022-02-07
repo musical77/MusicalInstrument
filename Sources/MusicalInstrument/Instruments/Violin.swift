@@ -14,7 +14,12 @@ public class Violin : MusicalInstrument {
     }
     
     public func adjust(with option: InstrumentControlOption) {
-        // not supported yet
+        switch option {
+        case .pressure(let pressure):
+            controller.sendPressure(pressure: pressure)
+        case .volume(let volume):
+            controller.sendController(SamplerController.VOLUME_CONTROL, withValue: volume)
+        }
     }
     
     public func stop(at pitch: Pitch) {

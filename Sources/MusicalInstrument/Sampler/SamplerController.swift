@@ -57,6 +57,9 @@ public class SamplerController {
     
     private var sampler: AVAudioUnitSampler
     private var pitchInQueue: Set<Pitch> = Set<Pitch>()
+    
+    public static let VOLUME_CONTROL: UInt8 = 7
+    public static let PEDAL_CONTROL: UInt8 = 64
 }
 
 
