@@ -10,7 +10,7 @@ class ViolinTests: XCTestCase {
         let violin = Violin.default
         
         let pitch = Pitch("C4")
-        violin.play(at: pitch, with: .intensity(60))
+        violin.play(at: pitch, with: .velocity(60))
         sleep(3)
 
         violin.stop(at: pitch)
@@ -21,8 +21,8 @@ class ViolinTests: XCTestCase {
     func testStopAll() {
         let violin = Violin.default
         
-        violin.play(at: Pitch("C4"), with: .intensity(60))
-        violin.play(at: Pitch("E4"), with: .intensity(60))
+        violin.play(at: Pitch("C4"), with: .velocity(60))
+        violin.play(at: Pitch("E4"), with: .velocity(60))
 
         sleep(1)
         violin.stopAll()

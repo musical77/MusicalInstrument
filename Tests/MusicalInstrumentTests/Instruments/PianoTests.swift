@@ -15,7 +15,7 @@ class PianoTests: XCTestCase {
         let pitch = Pitch("C4")
         for idx in 1...20 {
             let duration = Double(idx) * 0.01 // duration start form 10ms
-            piano.play(at: pitch, with: NotePlayingOptions(playIntenisty: 60))
+            piano.play(at: pitch, with: .velocity(60))
             Thread.sleep(forTimeInterval: duration)
             piano.stop(at: pitch)
             
@@ -33,7 +33,7 @@ class PianoTests: XCTestCase {
         
         for midiNote: Int in 0...127 {
             let pitch = Pitch(midiNote: midiNote)
-            piano.play(at: pitch, with: .intensity(60))
+            piano.play(at: pitch, with: .velocity(60))
             Thread.sleep(forTimeInterval: 0.05)
             piano.stop(at: pitch)
 
@@ -51,7 +51,7 @@ class PianoTests: XCTestCase {
         
         for velocity: UInt8 in 0...127 {
             let pitch = Pitch(60)
-            piano.play(at: pitch, with: .intensity(velocity))
+            piano.play(at: pitch, with: .velocity(velocity))
             Thread.sleep(forTimeInterval: 0.10)
             piano.stop(at: pitch)
 
@@ -65,7 +65,7 @@ class PianoTests: XCTestCase {
     /// test default piano
     func testPianoDefault() {
         let piano = Piano.default
-        piano.play(at: "C4", with: .intensity(60))
+        piano.play(at: "C4", with: .velocity(60))
         Thread.sleep(forTimeInterval: 1.0)
         piano.stop(at: "C4")
     }
@@ -77,7 +77,7 @@ class PianoTests: XCTestCase {
         
         // first note, without padel
         print("no padel")
-        piano.play(at: .C4, with: NotePlayingOptions(playIntenisty: 60))
+        piano.play(at: .C4, with: .velocity(60))
         Thread.sleep(forTimeInterval: 0.10)
         piano.stop(at: .C4)
         Thread.sleep(forTimeInterval: 2.0)
@@ -85,7 +85,7 @@ class PianoTests: XCTestCase {
         // padal on , then press the key
         print("use padel")
         piano.pedalOn()
-        piano.play(at: .C4, with: NotePlayingOptions(playIntenisty: 60))
+        piano.play(at: .C4, with: .velocity(60))
         Thread.sleep(forTimeInterval: 0.10)
         piano.stop(at: .C4)
         // duration the following 2 seconds, sound still exists
@@ -105,9 +105,9 @@ class PianoTests: XCTestCase {
 
         print("padel on")
         piano.pedalOn()
-        piano.play(at: "C4", with: .intensity(60))
-        piano.play(at: "E4", with: .intensity(60))
-        piano.play(at: "G4", with: .intensity(60))
+        piano.play(at: "C4", with: .velocity(60))
+        piano.play(at: "E4", with: .velocity(60))
+        piano.play(at: "G4", with: .velocity(60))
         Thread.sleep(forTimeInterval: 0.1)
         piano.stop(at: "C4")
         piano.stop(at: "E4")
@@ -115,7 +115,7 @@ class PianoTests: XCTestCase {
         Thread.sleep(forTimeInterval: 1.0)
 
         // play
-        piano.play(at: "D4", with: .intensity(60))
+        piano.play(at: "D4", with: .velocity(60))
         Thread.sleep(forTimeInterval: 0.1)
         piano.stop(at: "D4")
         Thread.sleep(forTimeInterval: 2.0)
@@ -131,15 +131,15 @@ class PianoTests: XCTestCase {
         
         print("padel on")
         piano.pedalOn()
-        piano.play(at: "C4", with: .intensity(60))
-        piano.play(at: "E4", with: .intensity(60))
-        piano.play(at: "G4", with: .intensity(60))
+        piano.play(at: "C4", with: .velocity(60))
+        piano.play(at: "E4", with: .velocity(60))
+        piano.play(at: "G4", with: .velocity(60))
         Thread.sleep(forTimeInterval: 0.1)
         piano.stopAll()
         Thread.sleep(forTimeInterval: 1.0)
 
         // off and quickly on the padel
-        piano.play(at: "D4", with: .intensity(60))
+        piano.play(at: "D4", with: .velocity(60))
         piano.pedalOff()
         piano.pedalOn()
         Thread.sleep(forTimeInterval: 0.1)

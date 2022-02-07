@@ -9,11 +9,11 @@ import AVFAudio
 /// violin
 public class Violin : MusicalInstrument {
     
-    public func play(at pitch: Pitch, with guidance: NotePlayingOptions) {
-        controller.play(at: pitch, with: guidance.playIntenisty)
+    public func play(at pitch: Pitch, with option: NotePlayingOption) {
+        controller.play(at: pitch, with: option.noteOnVelocity)
     }
     
-    public func adjust(at pitch: Pitch, with guidance: NotePlayingOptions) {
+    public func adjust(with option: InstrumentControlOption) {
         // not supported yet
     }
     
