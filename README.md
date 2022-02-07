@@ -84,3 +84,7 @@ https://github.com/musical77/MusicalInstrument/blob/main/Examples/audio/pianoAnd
 
 
 
+Reference
+---
+
+https://www.midi.org/midi-articles/about-midi-part-3-midi-messages

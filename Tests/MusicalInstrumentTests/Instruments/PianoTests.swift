@@ -15,7 +15,7 @@ class PianoTests: XCTestCase {
         let pitch = Pitch("C4")
         for idx in 1...20 {
             let duration = Double(idx) * 0.01 // duration start form 10ms
-            piano.play(at: pitch, with: NotePlayGuidance(playIntenisty: 60))
+            piano.play(at: pitch, with: NotePlayingOptions(playIntenisty: 60))
             Thread.sleep(forTimeInterval: duration)
             piano.stop(at: pitch)
             
@@ -77,7 +77,7 @@ class PianoTests: XCTestCase {
         
         // first note, without padel
         print("no padel")
-        piano.play(at: .C4, with: NotePlayGuidance(playIntenisty: 60))
+        piano.play(at: .C4, with: NotePlayingOptions(playIntenisty: 60))
         Thread.sleep(forTimeInterval: 0.10)
         piano.stop(at: .C4)
         Thread.sleep(forTimeInterval: 2.0)
@@ -85,7 +85,7 @@ class PianoTests: XCTestCase {
         // padal on , then press the key
         print("use padel")
         piano.pedalOn()
-        piano.play(at: .C4, with: NotePlayGuidance(playIntenisty: 60))
+        piano.play(at: .C4, with: NotePlayingOptions(playIntenisty: 60))
         Thread.sleep(forTimeInterval: 0.10)
         piano.stop(at: .C4)
         // duration the following 2 seconds, sound still exists

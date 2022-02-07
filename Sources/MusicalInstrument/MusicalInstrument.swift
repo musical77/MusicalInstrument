@@ -15,10 +15,10 @@ public protocol MusicalInstrument {
     func type() -> InstrumentType
     
     /// play a note at given pitch with given guidance
-    func play(at pitch: Pitch, with guidance: NotePlayGuidance)
+    func play(at pitch: Pitch, with guidance: NotePlayingOptions)
     
     /// adjust the note while being played at given pitch
-    func adjust(at pitch: Pitch, with guidance: NotePlayGuidance)
+    func adjust(at pitch: Pitch, with guidance: NotePlayingOptions)
     
     /// stop playing a note at given pitch
     func stop(at pitch: Pitch)

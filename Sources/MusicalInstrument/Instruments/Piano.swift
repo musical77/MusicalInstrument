@@ -7,11 +7,11 @@ import AVFoundation
 import MusicSymbol
 
 public class Piano : MusicalInstrument {
-    public func play(at pitch: Pitch, with guidance: NotePlayGuidance) {
+    public func play(at pitch: Pitch, with guidance: NotePlayingOptions) {
         controller.play(at: pitch, with: guidance.playIntenisty)
     }
     
-    public func adjust(at pitch: Pitch, with guidance: NotePlayGuidance) {
+    public func adjust(at pitch: Pitch, with guidance: NotePlayingOptions) {
         // not supported yet
     }
     
