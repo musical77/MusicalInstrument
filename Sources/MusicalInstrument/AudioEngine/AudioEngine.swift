@@ -5,6 +5,7 @@
 
 import Foundation
 import AVFoundation
+import MusicSymbol
 
 import os
 
@@ -17,7 +18,7 @@ public class AudioEngine {
         return AudioEngine(soundBankUrl: url)!
     }()
     
-    /// 初始化声音引擎
+    /// init sound engine, load from a sound bank(sound font) url
     public init?(soundBankUrl: URL) {
         engine = AVAudioEngine()
         
@@ -50,11 +51,29 @@ public class AudioEngine {
     }
     
     /// return sampler for given instrument
-    public func sampler(_ instrument: InstrumentType) -> AVAudioUnitSampler? {
+    public func sampler(_ instrument: InstrumentFamily) -> AVAudioUnitSampler? {
         return samplerMap[instrument]
     }
     
-    // MARK: private
+    /// instrument type -> samplers
+    private var samplerMap: [InstrumentFamily: AVAudioUnitSampler] = [:]
+    
+    /// inline audio engine
+    private var engine: AVAudioEngine? = nil
+    
+    private let melodicBank: UInt8 = UInt8(kAUSampler_DefaultMelodicBankMSB)
+    private let gmPiano: UInt8 = 2
+    private let gmViolin: UInt8 = 41
+    
+    /// 录制的声音文件
+    private var file: AVAudioFile?
+    
+    /// 日志
+    private var logger = Logger(subsystem: "MusicalInstrument", category: "AudioEngine")
+    
+}
+
+extension AudioEngine {
     
     /// start the audio engine
     private func start() -> Bool {
@@ -96,7 +115,7 @@ public class AudioEngine {
                                                       bankLSB: 0)
             
             samplerMap[.piano] = pianoSampler
-            samplerMap[.violin] = violinSampler
+            samplerMap[.strings] = violinSampler
             
             return true
         } catch {
@@ -104,22 +123,6 @@ public class AudioEngine {
             return false
         }
     }
-    
-    /// instrument type -> samplers
-    private var samplerMap: [InstrumentType: AVAudioUnitSampler] = [:]
-    
-    /// inline audio engine
-    private var engine: AVAudioEngine? = nil
-    
-    private let melodicBank: UInt8 = UInt8(kAUSampler_DefaultMelodicBankMSB)
-    private let gmPiano: UInt8 = 2
-    private let gmViolin: UInt8 = 41
-    
-    /// 录制的声音文件
-    private var file: AVAudioFile?
-    
-    /// 日志
-    private var logger = Logger(subsystem: "MusicalInstrument", category: "AudioEngine")
     
 }
 

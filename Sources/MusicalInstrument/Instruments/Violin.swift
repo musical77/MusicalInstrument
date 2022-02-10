@@ -7,7 +7,7 @@ import MusicSymbol
 import AVFAudio
 
 /// violin
-public class Violin : MusicalInstrument {
+public class Violin {
     
     public func play(at pitch: Pitch, with option: NotePlayingOption) {
         controller.play(at: pitch, with: option.noteOnVelocity)
@@ -34,8 +34,8 @@ public class Violin : MusicalInstrument {
         return "Violin"
     }
 
-    public func type() -> InstrumentType {
-        return .violin
+    public func type() -> InstrumentFamily {
+        return .strings
     }
 
     public init(sampler: AVAudioUnitSampler) {
@@ -45,7 +45,7 @@ public class Violin : MusicalInstrument {
     /// default, easy to use Violine
     public static var `default` : Violin = {
         let engine = AudioEngine.default
-        let sampler = engine.sampler(.violin)!
+        let sampler = engine.sampler(.strings)!
         return Violin(sampler: sampler)
     }()
 

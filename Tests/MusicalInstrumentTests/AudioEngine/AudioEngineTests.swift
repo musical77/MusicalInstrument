@@ -14,7 +14,7 @@ class AudioEngineTests: XCTestCase {
         
         let pianoSampler = engine.sampler(.piano)
         XCTAssertNotNil(pianoSampler)
-        let violinSampler = engine.sampler(.violin)
+        let violinSampler = engine.sampler(.strings)
         XCTAssertNotNil(violinSampler)
 
         pianoSampler!.startNote(60, withVelocity: 100, onChannel: 0)
