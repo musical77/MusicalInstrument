@@ -7,7 +7,7 @@ import MusicSymbol
 import AVFAudio
 
 /// violin
-public class Violin {
+public class Violin: MusicalInstrument {
     
     public func play(at pitch: Pitch, with option: NotePlayingOption) {
         controller.play(at: pitch, with: option.noteOnVelocity)

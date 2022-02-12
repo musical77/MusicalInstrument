@@ -6,7 +6,7 @@ import Foundation
 import AVFoundation
 import MusicSymbol
 
-public class Piano {
+public class Piano: MusicalInstrument {
     public func play(at pitch: Pitch, with option: NotePlayingOption) {
         controller.play(at: pitch, with: option.noteOnVelocity)
     }
