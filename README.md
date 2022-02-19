@@ -39,7 +39,7 @@ You can hear the center C of the piano playing from the speakers.
 ``` swift
 // create a piano, and play middle C for a second.
 let piano = Piano.default
-piano.play(at: "C4", with: .velocity(60))
+piano.play(at: "C4")
 Thread.sleep(forTimeInterval: 1.0)
 piano.stop(at: "C4")
 ```
@@ -59,16 +59,16 @@ _ = recorder.startRecording(saveTo: URL(...))
 // let's play some music
 violin.play(at: "E4", with: .velocity(100))
 piano.play(at: "C4", with: .velocity(50))
-piano.play(at: "E4", with: .velocity(50))
-piano.play(at: "G4", with: .velocity(50))
+     .play(at: "E4", with: .velocity(50))
+     .play(at: "G4", with: .velocity(50))
 Thread.sleep(forTimeInterval: 1.0)
 violin.stop(at: "E4")
 piano.stopAll()
 
 violin.play(at: "D4", with: .velocity(50))
 piano.play(at: "B3", with: .velocity(50))
-piano.play(at: "D4", with: .velocity(50))
-piano.play(at: "G4", with: .velocity(50))
+     .play(at: "D4", with: .velocity(50))
+     .play(at: "G4", with: .velocity(50))
 Thread.sleep(forTimeInterval: 1.0)
 violin.stop(at: "D4")
 piano.stopAll()
@@ -89,7 +89,7 @@ let piano = Piano.default
 
 // padal on , then press the key
 piano.pedalOn()
-piano.play(at: .C4, with: .velocity(60))
+piano.play(at: .C4)
 Thread.sleep(forTimeInterval: 0.10)
 piano.stop(at: .C4)
 // duration the following 2 seconds, sound still exists

@@ -16,10 +16,10 @@ class PianoAndViolinTests: XCTestCase {
         _ = recorder.startRecording(saveTo: makeURLInDir(fileNamed: "pianoAndViolin.caf")!)
         
         /// let's play some music
-        violin.play(at: "E4", with: .velocity(100))
-        piano.play(at: "C4", with: .velocity(50))
-        piano.play(at: "E4", with: .velocity(50))
-        piano.play(at: "G4", with: .velocity(50))
+        _ = violin.play(at: "E4", with: .velocity(100))
+        _ = piano.play(at: "C4", with: .velocity(50))
+            .play(at: "E4", with: .velocity(50))
+            .play(at: "G4", with: .velocity(50))
         Thread.sleep(forTimeInterval: 1.0)
         violin.stop(at: "E4")
         piano.stopAll()

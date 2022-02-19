@@ -6,6 +6,8 @@ import Foundation
 import MusicSymbol
 
 /// interface for a musical instrument
+/// The purpose of this interface is to simulate a real instrument, and all operations on the instrument are instantaneous feedback,
+/// including functions such as playing notes, stopping playing, and adjusting the status of the instrument.
 public protocol MusicalInstrument {
     
     /// name of this instrument
@@ -15,18 +17,22 @@ public protocol MusicalInstrument {
     func type() -> InstrumentFamily
     
     /// play a note at given pitch with given guidance
-    func play(at pitch: Pitch, with option: NotePlayingOption)
+    @discardableResult func play(at pitch: Pitch, with option: NotePlayingOption) -> MusicalInstrument
     
     /// stop playing a note at given pitch
-    func stop(at pitch: Pitch)
+    @discardableResult func stop(at pitch: Pitch) -> MusicalInstrument
     
     /// adjust the instrument with given option
     func adjust(with option: InstrumentControlOption)
     
     /// stop all the notes playing
     func stopAll()
-    
 }
 
+public extension MusicalInstrument {
+    @discardableResult func play(at pitch: Pitch) -> MusicalInstrument {
+        return play(at: pitch, with: .default)
+    }
+}
 
 

@@ -9,8 +9,14 @@ import AVFAudio
 /// violin
 public class Violin: MusicalInstrument {
     
-    public func play(at pitch: Pitch, with option: NotePlayingOption) {
+    @discardableResult public func play(at pitch: Pitch, with option: NotePlayingOption) -> MusicalInstrument {
         controller.play(at: pitch, with: option.noteOnVelocity)
+        return self
+    }
+    
+    @discardableResult public func stop(at pitch: Pitch) -> MusicalInstrument {
+        controller.stop(at: pitch)
+        return self
     }
     
     public func adjust(with option: InstrumentControlOption) {
@@ -21,11 +27,7 @@ public class Violin: MusicalInstrument {
             controller.sendController(SamplerController.VOLUME_CONTROL, withValue: volume)
         }
     }
-    
-    public func stop(at pitch: Pitch) {
-        controller.stop(at: pitch)
-    }
-    
+
     public func stopAll() {
         controller.stopAll()
     }

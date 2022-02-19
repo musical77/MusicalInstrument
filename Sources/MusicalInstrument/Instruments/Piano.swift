@@ -7,8 +7,10 @@ import AVFoundation
 import MusicSymbol
 
 public class Piano: MusicalInstrument {
-    public func play(at pitch: Pitch, with option: NotePlayingOption) {
+    
+    @discardableResult public func play(at pitch: Pitch, with option: NotePlayingOption) -> MusicalInstrument {
         controller.play(at: pitch, with: option.noteOnVelocity)
+        return self
     }
     
     public func adjust(with option: InstrumentControlOption) {
@@ -16,8 +18,9 @@ public class Piano: MusicalInstrument {
         assertionFailure("not supported yet in Piano")
     }
     
-    public func stop(at pitch: Pitch) {
+    @discardableResult public func stop(at pitch: Pitch) -> MusicalInstrument {
         controller.stop(at: pitch)
+        return self
     }
     
     public func stopAll() {

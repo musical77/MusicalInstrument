@@ -33,7 +33,7 @@ class PianoTests: XCTestCase {
         
         for midiNote: Int in 0...127 {
             let pitch = Pitch(midiNote: midiNote)
-            piano.play(at: pitch, with: .velocity(60))
+            piano.play(at: pitch)
             Thread.sleep(forTimeInterval: 0.05)
             piano.stop(at: pitch)
 
@@ -105,13 +105,9 @@ class PianoTests: XCTestCase {
 
         print("padel on")
         piano.pedalOn()
-        piano.play(at: "C4", with: .velocity(60))
-        piano.play(at: "E4", with: .velocity(60))
-        piano.play(at: "G4", with: .velocity(60))
+        piano.play(at: "C4").play(at: "E4").play(at: "G4")
         Thread.sleep(forTimeInterval: 0.1)
-        piano.stop(at: "C4")
-        piano.stop(at: "E4")
-        piano.stop(at: "G4")
+        piano.stop(at: "C4").stop(at: "E4").stop(at: "G4")
         Thread.sleep(forTimeInterval: 1.0)
 
         // play
